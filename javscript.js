@@ -17,47 +17,71 @@ navToggle.addEventListener("click", () => {
     }
 });
 
+
+
 //form validation function
-function unameVal () {
-    var name=document.formss.uname.value; 
+const form = document.getElementById('forms');
+const username = document.getElementById('uname');
+const email = document.getElementById('email');
+const password = document.getElementById('pswrd');
+const password2 = document.getElementById('pswrd2');
 
-    if (name == null || name == "") {
-        
-        
-    } else {
-        
-    }
-    
+form.addEventListener('submit', e => {
+	e.preventDefault();
+	
+	inputChecks();
+});
+
+
+function inputChecks() {
+	// trim to remove the whitespaces
+	const usernameValue = username.value.trim();
+	const emailValue = email.value.trim();
+	const passwordValue = password.value.trim();
+	const password2Value = password2.value.trim();
+	
+	if(usernameValue === '') {
+		setErrorFor(username, 'Username cannot be blank');
+	} else {
+		setSuccessFor(username);
+	}
+	
+	if(emailValue === '') {
+		setErrorFor(email, 'Email cannot be blank');
+	} else if (!isEmail(emailValue)) {
+		setErrorFor(email, 'Not a valid email');
+	} else {
+		setSuccessFor(email);
+	}
+	
+	if(passwordValue === '') {
+		setErrorFor(password, 'Password cannot be blank');
+	} else {
+		setSuccessFor(password);
+	}
+	
+	if(password2Value === '') {
+		setErrorFor(password2, 'Password2 cannot be blank');
+	} else if(passwordValue !== password2Value) {
+		setErrorFor(password2, 'Passwords does not match');
+	} else{
+		setSuccessFor(password2);
+	}
 }
-    var password=document.myform.password.value;
-    
-    var num=document.myform.num.value;  
 
-    var firstpassword=document.f1.password.value;  
-    var secondpassword=document.f1.password2.value;  
-  
-    if (name==null || name==""){  
-    alert("Name can't be blank");  
-    return false;  
-    }else if(password.length<6){  
-    alert("Password must be at least 6 characters long.");  
-    return false;  
-    } else if (firstpassword==secondpassword) {
-        return true;
-        
-    } else {
-        alert("password must be same!");  
-        return false; 
-    }
-    
-        
-        if (isNaN(num)){  
-          document.getElementById("numloc").innerHTML="Enter Numeric value only";  
-          return false;  
-        }else{  
-          return true;  
-          }       
+function setErrorFor(input, message) {
+	const formControl = input.parentElement;
+	const small = formControl.querySelector('small');
+	formControl.className = 'form-control error';
+	small.innerText = message;
+}
 
-
+function setSuccessFor(input) {
+	const formControl = input.parentElement;
+	formControl.className = 'form-control success';
+}
+	
+function isEmail(email) {
+	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 

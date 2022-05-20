@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap');
+
+.{
+    box-sizing: border-box;
+}
 
 body {
 
     background-image: url(images/background1.jfif);
     background-size: cover;
     color: aliceblue;
+    
 
     overflow-x: hidden;
 }
@@ -84,32 +90,37 @@ body {
 
 /* FORMS SECTION*/
 .container {
-    margin: auto;
-    padding-inline: 30%;
     color: white;
-    width: fit-content;
     backdrop-filter: blur(2rem);
     border-radius: 4rem;
-    
-
+    overflow: hidden;
+    width: 500px;
+	max-width: 100%;  
 }
 
 .sign-div {
+    margin: auto;
+    font-family: 'Raleway', sans-serif;
     justify-items: center;
     text-align: center;
-    padding-top: 5%;
+    padding-top: 10%;
     padding-bottom: 5%;
-    padding-left: 10%;
-    width: inherit;
 }
+
+.sign-div h1 {
+    font-weight: 700;
+}
+
 .forms-fill {
-    width: inherit;
-     
+    margin: auto;
+    width: 80%;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .forms-fill i {
     
-        margin-left: -30px;
+        margin-left: 30px;
+        margin-top: 20px;
         cursor: pointer;
         z-index: 100;
         background: none;
@@ -156,15 +167,34 @@ body {
         aspect-ratio: 1;
         top: 2rem;
         right: 2rem;
+        
     }
 
     .mobile-nav-toggle[aria-expanded="true"] {
         background-image: url(images/closebl.svg);
         background-size: 50%;
+        aspect-ratio: 2;
+        top: 3rem;
+        right: 1.5rem;
     }
 
     .container {
-        padding-inline: 5%;
+        width: 300px;
+        max-width: 100%;  
     }
+
+    
+}
+
+ small {
+	color: #e74c3c;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+.error small {
+	visibility: visible;
 }
 
